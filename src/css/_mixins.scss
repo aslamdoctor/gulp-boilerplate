@@ -1,3 +1,7 @@
+@mixin debug($color:red){
+	border:1px solid $color;
+}
+
 @mixin box($width, $height){
 	width:$width; 
 	height:$height;
@@ -33,7 +37,6 @@
 	left:0px; right:0px; margin-left:auto; margin-right:auto;
 }
 
-
 @mixin flex{
     display: flex;
     flex-wrap: wrap;
@@ -63,14 +66,27 @@
     transition:$what $length $easing;
 }
 
-
 @mixin hidden(){
 	opacity:0; visibility: hidden;
 }
+
 @mixin visible(){
 	opacity:1; visibility: visible;
 }
 
+@mixin pseudo($display: block, $pos: absolute, $content: ''){
+    content: $content;
+    display: $display;
+    position: $pos;
+}
+
+@mixin clearfix {
+	&:after {
+	  content: "";
+	  display: table;
+	  clear: both;
+	}
+}
 
 @mixin reset_button(){
 	padding:0px; border:none; background:none; @include border-radius(0px); text-align:center;
@@ -94,6 +110,7 @@
 	}
 }
 
+
 @mixin fontawsome($icon: "\f08c"){
 	position: relative;
 	&:before {
@@ -114,22 +131,22 @@
 
 @mixin typography{
 	h1{
-		//margin-bottom: $content-margin;
+		margin-bottom: $heading-margin;
 	}
 	h2{
-		//margin-bottom: $content-margin;
+		margin-bottom: $heading-margin;
 	}
 	h3{
-		//margin-bottom: $content-margin;
+		margin-bottom: $heading-margin;
 	}
 	h4{
-		//margin-bottom: $content-margin;
+		margin-bottom: $heading-margin;
 	}
 	h5{
-		//margin-bottom: $content-margin;
+		margin-bottom: $heading-margin;
 	}
 	h6{
-		//margin-bottom: $content-margin;
+		margin-bottom: $heading-margin;
 	}
 	.alignnone {
 	    margin: 0px 0px $img-margin 0px;
@@ -184,10 +201,7 @@
 	}
 
 	blockquote{
-		/* margin:0px 0px $content-margin 0px;
-		p:last-child{
-			margin-bottom:0px;
-		} */
+		
 	}
 }
 
