@@ -11,8 +11,8 @@ const concat = require('gulp-concat'); // to concat files
 // add all the css/sass files here to compile
 var css_files = [
 	'./src/js/**/*.css', 
-	'./src/css/*.css', 
-	'./src/css/*.scss', 
+	'./src/css/**/*.css', 
+	'./src/css/**/*.scss', 
 ]
 
 // add all the js files here to compile
@@ -20,6 +20,11 @@ var js_files = [
 	'./src/js/jquery-3.3.1.min.js',
 	'./src/js/bootstrap/bootstrap.bundle.min.js',
 	'./src/js/scripts.js',
+]
+
+// add all icon files here to compile
+var icon_files = [
+	'./src/css/fontawesome/webfonts/*',
 ]
 
 // add all the compile files here to delete before recompiling
@@ -41,7 +46,7 @@ function css() {
 			cssnano()
 		]))
 		.pipe(sourcemaps.write('.'))
-		.pipe(gulp.dest('dist/css/'));
+		.pipe(gulp.dest('dist/assets/css/'));
 }
 
 // JS Task
@@ -49,7 +54,13 @@ function js() {
 	return gulp.src(js_files, { sourcemaps: true })
 		.pipe(uglify())
 		.pipe(concat('scripts.min.js'))
-		.pipe(gulp.dest('dist/js/', { sourcemaps: false }));
+		.pipe(gulp.dest('dist/assets/js/', { sourcemaps: false }));
+}
+
+// Icons Task
+function icons() {
+	return gulp.src(icon_files, { sourcemaps: true })
+        .pipe(gulp.dest('dist/assets/webfonts/'));
 }
 
 // Cleanup Task
@@ -65,15 +76,16 @@ function watchFiles() {
 	// Watch js files changes
 	gulp.watch(js_files, js);
 }
-const watch = gulp.series(clean, watchFiles);
+const watch = gulp.series(clean, icons, watchFiles);
 
 
 // Default Build Task
-const build = gulp.series(clean, gulp.parallel(css, js));
+const build = gulp.series(clean, gulp.parallel(icons, css, js));
  
 // Export all tasks
 exports.css = css;
 exports.js = js;
+exports.icons = icons;
 exports.clean = clean;
 exports.watch = watch;
 exports.default = build;

@@ -1,2 +1,2 @@
-1. browsersync
-2. uncss
+1. browsersync - optional
+2. uncss - optional
