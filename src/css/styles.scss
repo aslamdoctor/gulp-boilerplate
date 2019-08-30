@@ -1,8 +1,14 @@
-/* @import "../js/bootstrap/bootstrap.min.css";
-@import "../css/fontawesome/css/all.min.css"; */
-
+// Configurations
 @import "fonts";
 @import "variables";
-@import "global";
+@import "media_queries";
+@import "mixins";
 @import "helpers";
+@import "grid";
+@import "global";
 
+// Partials
+.box{
+	@include box(100%, 400px);
+	border:1px solid #ccc;
+}

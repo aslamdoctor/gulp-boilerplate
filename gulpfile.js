@@ -19,6 +19,7 @@ var css_files = [
 var js_files = [
 	'./src/js/jquery-3.3.1.min.js',
 	'./src/js/bootstrap/bootstrap.bundle.min.js',
+	'./src/js/slick/slick.min.js',
 	'./src/js/scripts.js',
 ]
 
