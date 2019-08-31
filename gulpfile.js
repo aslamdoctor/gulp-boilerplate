@@ -1,12 +1,12 @@
 const gulp = require("gulp");
 const del = require("del");
-const autoprefixer = require('autoprefixer'); // add autoprefix css styles for older browsers support
-const sourcemaps = require('gulp-sourcemaps');
-const postcss = require("gulp-postcss");
-const cssnano = require("cssnano"); // to minimixe css files code
+const postcss = require("gulp-postcss"); // library required for cssnano and autoprefixes
+const autoprefixer = require('autoprefixer'); // add autoprefix CSS styles for older browsers support
+const cssnano = require("cssnano"); // to minimixe CSS files code
+const sourcemaps = require('gulp-sourcemaps'); // to generate sourcemap files for SASS
 const sass = require("gulp-sass"); // to add SASS support
-const uglify = require('gulp-uglify'); // to minimize js files code
-const concat = require('gulp-concat'); // to concat files
+const uglify = require('gulp-uglify'); // to minimize JS files code
+const concat = require('gulp-concat'); // to concat JS files
 
 // add all the css/sass files here to compile
 var css_files = [
@@ -28,11 +28,13 @@ var icon_files = [
 	'./src/css/fontawesome/webfonts/*',
 ]
 
+
 // add all the compile files here to delete before recompiling
 var cleanup_files = [
 	'./dist/css/',
 	'./dist/js/',
 ]
+
 
 // CSS Task
 function css() {
@@ -45,10 +47,11 @@ function css() {
 				cascade: false
 			}), 
 			cssnano()
-		]))
+		]))	
 		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest('dist/assets/css/'));
 }
+
 
 // JS Task
 function js() {
@@ -58,16 +61,19 @@ function js() {
 		.pipe(gulp.dest('dist/assets/js/', { sourcemaps: false }));
 }
 
+
 // Icons Task
 function icons() {
-	return gulp.src(icon_files, { sourcemaps: true })
-        .pipe(gulp.dest('dist/assets/webfonts/'));
+	return gulp.src(icon_files)
+		.pipe(gulp.dest('dist/assets/webfonts/'));
 }
+
 
 // Cleanup Task
 function clean() {
 	return del(cleanup_files);
 }
+
 
 // Watch files Task
 function watchFiles() {
@@ -76,17 +82,24 @@ function watchFiles() {
 	
 	// Watch js files changes
 	gulp.watch(js_files, js);
+	
+	// Watch icons files changes
+	gulp.watch(icon_files, icons);
 }
-const watch = gulp.series(clean, icons, watchFiles);
 
+// Watch Task
+const watch = gulp.parallel(watchFiles);
 
-// Default Build Task
+// Build Task
 const build = gulp.series(clean, gulp.parallel(icons, css, js));
- 
+
+
 // Export all tasks
 exports.css = css;
 exports.js = js;
 exports.icons = icons;
+
 exports.clean = clean;
 exports.watch = watch;
+exports.build = build;
 exports.default = build;
