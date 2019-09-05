@@ -239,4 +239,28 @@
 			}
 		}
 	}
+}	
+
+
+@mixin limit_body_width(){
+	max-width: $body-width;
+	width:100%;
+	margin:0px auto;
 }
+
+
+@mixin svg_icon(){
+	display: inline-block;
+	background: #000;
+	place-items: center center;
+	-webkit-mask-size: cover; mask-size: cover;
+}
+/* 
+Usage:
+.icon-instagram{
+	width: 16px;
+	height: 16px;
+	-webkit-mask: url(../img/i_instagram.svg); mask: url(../img/i_instagram.svg);
+	@include svg_icon;	
+} 
+*/
