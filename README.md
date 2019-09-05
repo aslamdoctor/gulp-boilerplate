@@ -55,3 +55,20 @@ It generates all the files inside **theme_folder/dest/** folder. So you don't ne
 cd dev
 git push
 ```
+
+**STEP 9** - If you want to add any new SASS file, simply add it inside **/dev/src/css/** folder and it will compile automatically. Don't forget to stop gulp compiler and restart it using `gulp watch` command.
+
+
+**STEP 10** - If you want to add any new JS file, put them inside **/dev/src/js/** folder. After that update gulpfile.js file and add path to this JS file inside Array variable that says like below. Make sure scripts.js entry stays as last element of array.
+Don't forget to stop gulp compiler and restart it using `gulp watch` command.
+
+```
+// add all the js files here to compile
+var js_files = [
+	'./src/js/jquery-3.3.1.min.js',
+	'./src/js/bootstrap/bootstrap.bundle.min.js',
+	'./src/js/slick/slick.min.js',
+    ... add our js files here ...
+	'./src/js/scripts.js',
+]
+```
