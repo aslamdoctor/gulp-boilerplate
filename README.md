@@ -7,6 +7,7 @@
 1. **dev/gulpfile.js** : This is gulp configuration file. You have to configure couple of things in it at first.
 1. **dev/package.json**, dev/package-lock.json : These files keeps record of all the Node packages we will be using. Don't modify it.
 1. **dev/.gitignore** : This file contains list of files that don't need to be pushed to the Repo. I have already updated this file so no need to touch it aswell.
+1. **dev/.browserslistrc** => This is a configuration file for CSS autoprefixer. No need to touch it.
 1. **README.md** => Just a file for Github repo for instruction purpose.
 
 
