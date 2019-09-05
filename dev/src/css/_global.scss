@@ -1,0 +1,100 @@
+body, *{
+	font-family: $font1;
+	color:$main_color;
+}
+
+body {
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased; 
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+	font-family: $font2;
+}
+
+input, button, select, textarea, .form-control {
+	font-family: $font1;
+	line-height: normal;
+}
+
+*:focus,
+a:focus,
+a:active {
+	outline: none;
+	color: inherit;
+	text-decoration: inherit;
+}
+
+br {
+	font-size: inherit;
+	line-height: inherit;
+}
+
+section {
+	display: block;
+}
+
+img {
+	max-width: 100%; height:auto;
+}
+
+a {
+	text-decoration: none;
+	@include transition;
+}
+
+i {
+	color: inherit;
+	font-size: inherit;
+}
+
+strong{
+	font-size: inherit; line-height: inherit;
+}
+
+button, input[type=submit]{
+	@include transition;
+}
+
+.form-control{
+	@include border-radius(0px);
+	height:40px; 
+	border:none;
+	border:1px solid #ccc;
+	
+	&:focus{
+		border-color:#000;
+		outline: 0;
+		box-shadow: none; 
+	}
+}
+
+textarea.form-control{
+	height:auto;
+}
+
+select.form-control{
+	height:auto;
+}
+
+.form-group{
+	margin-bottom:25px;
+}
+
+iframe{
+	max-width:100%;
+}
+
+svg{
+	display: inline-block;
+}
+
+
+.the-carousel{
+	display: none;
+
+	&.slick-initialized{
+		display: block;
+	}
+}
+

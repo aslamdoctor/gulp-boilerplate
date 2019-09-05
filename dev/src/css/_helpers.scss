@@ -1,0 +1,66 @@
+.relative{
+	position:relative; z-index:0;
+}
+
+.overflow{
+	overflow:hidden;
+}
+
+.no-gutters {
+	margin-right: 0;
+	margin-left: 0;
+  
+	> .col,
+	> [class*="col-"] {
+	  padding-right: 0;
+	  padding-left: 0;
+	}
+}
+
+.valign{
+	@include vertical-align;
+}
+.halign{
+	@include horizontal-align;
+}
+.vhalign{
+	@include vertical-horizontal-align;
+}
+
+
+/* responsive iframe wrapper */
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px;
+    height: 0;
+}
+.video-container iframe,   
+.video-container object,  
+.video-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100%;
+}	
+
+
+.typography{
+	@include typography;
+}
+
+//==== Custom Helpers ===//
+.the-button{
+	@include reset_button;
+	display: inline-block;
+	height:40px; line-height:40px; padding:0px 20px; 
+	
+	color:$main_color !important; text-decoration: none !important; 
+	background-color:#ccc;
+
+	&:hover{
+		background-color:#000;
+		color:#fff !important;
+	}
+}
