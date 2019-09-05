@@ -34,8 +34,8 @@ var font_files = [
 
 // add all the compile files here to delete before recompiling
 var cleanup_files = [
-	'../dist/css/',
-	'../dist/js/',
+	'../html/dist/css/',
+	'../html/dist/js/',
 ]
 var cleanup_files_wp = [
 	theme_folder + 'dist/css/',
@@ -56,7 +56,7 @@ function css() {
 			cssnano()
 		]))	
 		.pipe(sourcemaps.write('.'))
-		.pipe(gulp.dest('../dist/assets/css/'));
+		.pipe(gulp.dest('../html/dist/assets/css/'));
 }
 function css_wp() {
 	return gulp.src(css_files)
@@ -79,7 +79,7 @@ function js() {
 	return gulp.src(js_files, { sourcemaps: true })
 		.pipe(uglify())
 		.pipe(concat('scripts.min.js'))
-		.pipe(gulp.dest('../dist/assets/js/', { sourcemaps: false }));
+		.pipe(gulp.dest('../html/dist/assets/js/', { sourcemaps: false }));
 }
 function js_wp() {
 	return gulp.src(js_files, { sourcemaps: true })
@@ -92,7 +92,7 @@ function js_wp() {
 // Fonts Task
 function fonts() {
 	return gulp.src(font_files)
-		.pipe(gulp.dest('../dist/assets/webfonts/'));
+		.pipe(gulp.dest('../html/dist/assets/webfonts/'));
 }
 function fonts_wp() {
 	return gulp.src(font_files)
