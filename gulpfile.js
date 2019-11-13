@@ -1,5 +1,5 @@
 const gulp = require("gulp");
-const del = require("del");
+const clean = require('gulp-clean');
 const postcss = require("gulp-postcss"); // library required for cssnano and autoprefixes
 const autoprefixer = require('autoprefixer'); // add autoprefix CSS styles for older browsers support
 const cssnano = require("cssnano"); // to minimixe CSS files code
@@ -56,7 +56,7 @@ function css() {
 			cssnano()
 		]))	
 		.pipe(sourcemaps.write('.'))
-		.pipe(gulp.dest('../html/dist/assets/css/'));
+		.pipe(gulp.dest('../html/dist/css/'));
 }
 function css_wp() {
 	return gulp.src(css_files)
@@ -70,7 +70,7 @@ function css_wp() {
 			cssnano()
 		]))	
 		.pipe(sourcemaps.write('.'))
-		.pipe(gulp.dest(theme_folder + 'dist/assets/css/'));
+		.pipe(gulp.dest(theme_folder + 'dist/css/'));
 }
 
 
@@ -79,33 +79,47 @@ function js() {
 	return gulp.src(js_files, { sourcemaps: true })
 		.pipe(uglify())
 		.pipe(concat('scripts.min.js'))
-		.pipe(gulp.dest('../html/dist/assets/js/', { sourcemaps: false }));
+		.pipe(gulp.dest('../html/dist/js/', { sourcemaps: false }));
 }
 function js_wp() {
 	return gulp.src(js_files, { sourcemaps: true })
 		.pipe(uglify())
 		.pipe(concat('scripts.min.js'))
-		.pipe(gulp.dest(theme_folder + 'dist/assets/js/', { sourcemaps: false }));
+		.pipe(gulp.dest(theme_folder + 'dist/js/', { sourcemaps: false }));
 }
 
 
 // Fonts Task
 function fonts() {
 	return gulp.src(font_files)
-		.pipe(gulp.dest('../html/dist/assets/webfonts/'));
+		.pipe(gulp.dest('../html/dist/webfonts/'));
 }
 function fonts_wp() {
 	return gulp.src(font_files)
-		.pipe(gulp.dest(theme_folder + 'dist/assets/webfonts/'));
+		.pipe(gulp.dest(theme_folder + 'dist/webfonts/'));
 }
 
 
 // Cleanup Task
-function clean() {
-	return del(cleanup_files);
+function clean_files() {
+	return gulp.src(
+		cleanup_files,
+		{
+			read: false,
+			allowEmpty: true
+		}
+	)
+	.pipe(clean({force: true})); 
 }
-function clean_wp() {
-	return del(cleanup_files_wp);
+function clean_files_wp() {
+	return gulp.src(
+		cleanup_files_wp,
+		{
+			read: false,
+			allowEmpty: true
+		}
+	)
+	.pipe(clean({force: true})); 
 }
 
 
@@ -136,8 +150,8 @@ const watch = gulp.parallel(watchFiles);
 const watchwp = gulp.parallel(watchFiles_wp);
 
 // Build Task
-const build = gulp.series(clean, gulp.parallel(fonts, css, js));
-const buildwp = gulp.series(clean_wp, gulp.parallel(fonts_wp, css_wp, js_wp));
+const build = gulp.series(clean_files, gulp.parallel(fonts, css, js));
+const buildwp = gulp.series(clean_files_wp, gulp.parallel(fonts_wp, css_wp, js_wp));
 
 
 // Export all tasks
@@ -148,8 +162,8 @@ exports.jswp = js_wp;
 exports.fonts = fonts;
 exports.fontswp = fonts_wp;
 
-exports.clean = clean;
-exports.cleanwp = clean_wp;
+exports.clean = clean_files;
+exports.cleanwp = clean_files_wp;
 exports.watch = watch;
 exports.watchwp = watchwp;
 exports.build = build;
