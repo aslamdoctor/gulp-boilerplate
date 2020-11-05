@@ -1,10 +1,10 @@
-@mixin debug($color:red){
-	border:1px solid $color;
+@mixin debug($color: red) {
+	border: 1px solid $color;
 }
 
-@mixin box($width, $height){
-	width:$width; 
-	height:$height;
+@mixin box($width, $height) {
+	width: $width;
+	height: $height;
 }
 
 @mixin border-radius($radius) {
@@ -21,239 +21,153 @@
 }
 
 @mixin vertical-align {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
 }
 
 @mixin horizontal-align {
-    position: absolute;
+	position: absolute;
 	left: 50%;
-    transform: translateX(-50%);
+	transform: translateX(-50%);
 }
 
-@mixin vertical-horizontal-align{
+@mixin vertical-horizontal-align {
 	@include vertical-align;
-	left:0px; right:0px; margin-left:auto; margin-right:auto;
+	left: 0px;
+	right: 0px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
-@mixin flex{
-    display: flex;
-    flex-wrap: wrap;
+@mixin flex {
+	display: flex;
+	flex-wrap: wrap;
 }
 
-@mixin flex-start{
-    justify-content: flex-start;
+@mixin flex-start {
+	justify-content: flex-start;
 }
 
-@mixin flex-end{
-    justify-content: flex-end;
+@mixin flex-end {
+	justify-content: flex-end;
 }
 
-@mixin flex-center{
-    justify-content: center;
+@mixin flex-center {
+	justify-content: center;
 }
 
-@mixin flex-space-between{
-    justify-content: space-between;
+@mixin flex-space-between {
+	justify-content: space-between;
 }
 
-@mixin flex-space-around{
-    justify-content: space-around;
+@mixin flex-space-around {
+	justify-content: space-around;
 }
 
-@mixin transition($length: .25s, $what: all, $easing: ease-in-out) {
-    transition:$what $length $easing;
+@mixin transition($length: 0.25s, $what: all, $easing: ease-in-out) {
+	transition: $what $length $easing;
 }
 
-@mixin hidden(){
-	opacity:0; visibility: hidden;
+@mixin hidden() {
+	opacity: 0;
+	visibility: hidden;
 }
 
-@mixin visible(){
-	opacity:1; visibility: visible;
+@mixin visible() {
+	opacity: 1;
+	visibility: visible;
 }
 
-@mixin pseudo($display: block, $pos: absolute, $content: ''){
-    content: $content;
-    display: $display;
-    position: $pos;
+@mixin pseudo($display: block, $pos: absolute, $content: '') {
+	content: $content;
+	display: $display;
+	position: $pos;
 }
 
 @mixin clearfix {
 	&:after {
-	  content: "";
-	  display: table;
-	  clear: both;
+		content: '';
+		display: table;
+		clear: both;
 	}
 }
 
-@mixin reset_button(){
-	padding:0px; border:none; background:none; @include border-radius(0px); text-align:center;
-	cursor:pointer;
-	&:focus{
-		outline:0;
+@mixin reset_button() {
+	padding: 0px;
+	border: none;
+	background: none;
+	@include border-radius(0px);
+	text-align: center;
+	cursor: pointer;
+	&:focus {
+		outline: 0;
 	}
 }
 
-@mixin reset_ul(){
-	margin:0px; padding:0px; @include flex; @include flex-start;
-	li{
+@mixin reset_ul() {
+	margin: 0px;
+	padding: 0px;
+	@include flex;
+	@include flex-start;
+	li {
 		list-style: none;
 	}
 }
 
-@mixin reset_ul_block(){
-	margin:0px; padding:0px; display:block;
-	li{
+@mixin reset_ul_block() {
+	margin: 0px;
+	padding: 0px;
+	display: block;
+	li {
 		list-style: none;
 	}
 }
 
-
-@mixin fontawsome($icon: "\f08c"){
-	position: relative;
-	&:before {
-		content: $icon;
-		font-family: FontAwesome;
-		font-style: normal;
-		font-weight: normal;
-		text-decoration: inherit;
-		
-		/*--adjust as necessary--*/
-		color: inherit;
-		font-size: inherit;
-		position: absolute;
-		top: 0px;
-		left: 0px;
-	}
-}
-
-@mixin typography{
-	h1{
-		margin-bottom: $heading-margin;
-	}
-	h2{
-		margin-bottom: $heading-margin;
-	}
-	h3{
-		margin-bottom: $heading-margin;
-	}
-	h4{
-		margin-bottom: $heading-margin;
-	}
-	h5{
-		margin-bottom: $heading-margin;
-	}
-	h6{
-		margin-bottom: $heading-margin;
-	}
-	.alignnone {
-	    margin: 0px 0px $img-margin 0px;
-	}
-	.aligncenter,
-	div.aligncenter {
-	    display: block;
-	    margin: 0px auto $img-margin auto;
-	}
-	.alignright {
-	    float:right;
-	    margin: 0px 0px $img-margin $img-margin;
-	}
-	.alignleft {
-	    float: left;
-	    margin: 0px $img-margin $img-margin 0px;
-	}
-	a img.alignright {
-	    float: right;
-	    margin: 0px 0px $img-margin $img-margin;
-	}
-	a img.alignnone {
-	    margin: 0px 0px $img-margin 0px;
-	}
-	a img.alignleft {
-	    float: left;
-	    margin: 0px $img-margin $img-margin 0px;
-	}
-	a img.aligncenter {
-	    display: block;
-	    margin-left: auto;
-	    margin-right: auto
-	}
-	img{
-		height:auto;
-	}
-
-	ul, ol{
-		margin:0px 0px $content-margin 0px; 
-		padding:0px 0px 0px 20px; overflow:hidden;
-	}
-
-	a{
-		color:$main_color; text-decoration:underline;
-	}
-	a:hover{
-		text-decoration: none;
-	}
-
-	p{
-		margin:0px 0px $content-margin 0px;
-	}
-
-	blockquote{
-		
-	}
-}
-
-
-@mixin the-carousel{
-	.the-carousel{
+@mixin the-carousel {
+	.the-carousel {
 		position: relative;
-		.the-slide{
+		.the-slide {
 			position: relative;
 		}
 
-		.slick-arrow{
-			@include vertical-align; z-index: 2;
+		.slick-arrow {
+			@include vertical-align;
+			z-index: 2;
 			cursor: pointer;
-			&.slick-prev{
-				left:0px;
+			&.slick-prev {
+				left: 0px;
 			}
-			&.slick-next{
-				left:auto; right:0px;
+			&.slick-next {
+				left: auto;
+				right: 0px;
 			}
 		}
 
-		ul.slick-dots{
-			@include reset_ul; @include flex-center;
-			li{
-				button{
+		ul.slick-dots {
+			@include reset_ul;
+			@include flex-center;
+			li {
+				button {
 					cursor: pointer;
 				}
 
-				&.slick-active{
-					button{
-						color:red;
+				&.slick-active {
+					button {
+						color: red;
 					}
 				}
 			}
 		}
 	}
-}	
-
-
-@mixin limit_body_width(){
-	max-width: $body-width;
-	width:100%;
-	margin:0px auto;
 }
 
-
-@mixin svg_icon(){
+@mixin svg_icon() {
 	display: inline-block;
 	background: #000;
 	place-items: center center;
-	-webkit-mask-size: cover; mask-size: cover;
+	-webkit-mask-size: cover;
+	mask-size: cover;
 }
 /* 
 Usage:

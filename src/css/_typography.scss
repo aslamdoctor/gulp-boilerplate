@@ -1,0 +1,77 @@
+.typography {
+	h1 {
+		margin-bottom: $heading-margin;
+	}
+	h2 {
+		margin-bottom: $heading-margin;
+	}
+	h3 {
+		margin-bottom: $heading-margin;
+	}
+	h4 {
+		margin-bottom: $heading-margin;
+	}
+	h5 {
+		margin-bottom: $heading-margin;
+	}
+	h6 {
+		margin-bottom: $heading-margin;
+	}
+	.alignnone {
+		margin: 0px 0px $img-margin 0px;
+	}
+	.aligncenter,
+	div.aligncenter {
+		display: block;
+		margin: 0px auto $img-margin auto;
+	}
+	.alignright {
+		float: right;
+		margin: 0px 0px $img-margin $img-margin;
+	}
+	.alignleft {
+		float: left;
+		margin: 0px $img-margin $img-margin 0px;
+	}
+	a img.alignright {
+		float: right;
+		margin: 0px 0px $img-margin $img-margin;
+	}
+	a img.alignnone {
+		margin: 0px 0px $img-margin 0px;
+	}
+	a img.alignleft {
+		float: left;
+		margin: 0px $img-margin $img-margin 0px;
+	}
+	a img.aligncenter {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	img {
+		height: auto;
+	}
+
+	ul,
+	ol {
+		margin: 0px 0px $content-margin 0px;
+		padding: 0px 0px 0px 25px;
+		overflow: hidden;
+	}
+
+	a {
+		color: $primary_color;
+		text-decoration: underline;
+	}
+	a:hover {
+		text-decoration: none;
+	}
+
+	p {
+		margin: 0px 0px $content-margin 0px;
+	}
+
+	blockquote {
+	}
+}

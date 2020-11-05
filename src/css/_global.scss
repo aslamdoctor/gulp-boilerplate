@@ -1,10 +1,13 @@
-body,
+/* body,
 * {
 	font-family: $font1;
-	color: $main_color;
-}
+	color: $primary_color;
+} */
 
 body {
+	font-family: $font1;
+	color: $primary_color;
+	font-size: 16px;
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
 }
@@ -90,7 +93,7 @@ input[type='submit'] {
 	&.wpcf7-not-valid {
 		border-color: red;
 
-		&+.wpcf7-not-valid-tip {
+		& + .wpcf7-not-valid-tip {
 			text-align: left;
 		}
 	}
