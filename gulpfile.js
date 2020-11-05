@@ -27,10 +27,7 @@ var js_files = [
 ];
 
 // add all font files here to compile
-var font_files = [
-	//'./src/css/fontawesome/webfonts/*',
-	'./src/fonts/*',
-];
+var font_files = ['./src/fonts/*'];
 
 // add all the compile files here to delete before recompiling
 var cleanup_files = ['../html/dist/css/', '../html/dist/js/'];
