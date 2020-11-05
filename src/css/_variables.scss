@@ -2,3 +2,10 @@ $primary_color: #000000;
 $heading-margin: 1.4rem;
 $content-margin: 1.4rem;
 $img-margin: 1.4rem;
+
+.text-primary-color {
+	color: $primary_color;
+}
+.bg-primary-color {
+	background-color: $primary_color;
+}
