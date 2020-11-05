@@ -1,0 +1,37 @@
+{
+	"name": "dev",
+	"version": "1.0.0",
+	"description": "1. **dev/** : This is the folder in which all the development work will be done on CSS and JS files 1. **dev/.git** : Used for git versions controlling purpose. We don't need to do anything in this folder. It is auto generated. 1. **dev/node_modules** : Used for storing node packages. This folder will not available at first stage when downloaded Git repo. We don't need to do anything in this folder. It is auto generated. 1. **dev/src** : This is the main folder. It contains all sass and js files we will work on. 1. **dev/gulpfile.js** : This is gulp configuration file. You have to configure couple of things in it at first. 1. **dev/package.json**, dev/package-lock.json : These files keeps record of all the Node packages we will be using. Don't modify it. 1. **dev/.gitignore** : This file contains list of files that don't need to be pushed to the Repo. I have already updated this file so no need to touch it aswell. 1. **dev/.browserslistrc** => This is a configuration file for CSS autoprefixer. No need to touch it. 1. **README.md** => Just a file for Github repo for instruction purpose.",
+	"main": "gulpfile.js",
+	"scripts": {
+		"watch": "NODE_ENV='development' gulp watch",
+		"build": "NODE_ENV='production' gulp build",
+		"watchwp": "NODE_ENV='development' gulp watchwp",
+		"buildwp": "NODE_ENV='production' gulp buildwp"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/aslamdoctor/gulp-boilerplate.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/aslamdoctor/gulp-boilerplate/issues"
+	},
+	"homepage": "https://github.com/aslamdoctor/gulp-boilerplate#readme",
+	"dependencies": {
+		"@fullhuman/postcss-purgecss": "^3.0.0",
+		"autoprefixer": "<10.0.0",
+		"browser-sync": "^2.26.13",
+		"cssnano": "^4.1.10",
+		"gulp": "^4.0.2",
+		"gulp-clean": "^0.4.0",
+		"gulp-concat": "^2.6.1",
+		"gulp-postcss": "^9.0.0",
+		"gulp-rename": "^2.0.0",
+		"gulp-sass": "^4.1.0",
+		"gulp-sourcemaps": "^2.6.5",
+		"gulp-uglify": "^3.0.2"
+	}
+}
