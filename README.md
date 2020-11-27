@@ -46,7 +46,8 @@ npm run buildwp (run only for wordpress version)
 
 ```
 cd dev
-npm run watchwp
+npm run watch (run this only for html version)
+npm run watchwp (run this only for wordpress version)
 ```
 
 It generates all the files inside **theme_folder/dest/** folder. So you don't need to touch any css and js files inside theme folder.
