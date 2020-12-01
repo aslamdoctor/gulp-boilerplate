@@ -9,7 +9,7 @@ const uglify = require('gulp-uglify'); // to minimize JS files code
 const concat = require('gulp-concat'); // to concat JS files
 const purgecss = require('@fullhuman/postcss-purgecss'); // purge css to reduce css size
 
-var theme_folder = '../wp-content/themes/boilerplate-theme/';
+var theme_folder = '../wp-content/themes/boilerplate-theme';
 
 // add all the css/sass files here to compile
 var css_files = [
@@ -31,23 +31,35 @@ var font_files = ['./src/fonts/*'];
 
 // add all the compile files here to delete before recompiling
 var cleanup_files = ['../html/dist/css/', '../html/dist/js/'];
-var cleanup_files_wp = [theme_folder + 'dist/css/', theme_folder + 'dist/js/'];
+var cleanup_files_wp = [
+	theme_folder + '/dist/css/',
+	theme_folder + '/dist/js/',
+];
 
 // PurgeCSS Config
 var purge_config = [];
 if (process.env.NODE_ENV === 'production') {
 	purge_config = [
 		purgecss({
-			content: ['../html/*.html'],
+			content: ['../html/*.html', '../html/**/*.html'],
 			defaultExtractor: (content) => content.match(/[\w-/:]+(?<!:)/g) || [],
 		}),
 	];
 }
 var purge_config_wp = [];
 if (process.env.NODE_ENV === 'production') {
+	console.log([
+		theme_folder + '/*.php',
+		theme_folder + '/**/*.php',
+		...js_files,
+	]);
 	purge_config_wp = [
 		purgecss({
-			content: [theme_folder + '/*.php'],
+			content: [
+				theme_folder + '/*.php',
+				theme_folder + '/**/*.php',
+				...js_files,
+			],
 			defaultExtractor: (content) => content.match(/[\w-/:]+(?<!:)/g) || [],
 		}),
 	];
@@ -88,7 +100,7 @@ function css_wp() {
 			])
 		)
 		.pipe(sourcemaps.write('.'))
-		.pipe(gulp.dest(theme_folder + 'dist/css/'));
+		.pipe(gulp.dest(theme_folder + '/dist/css/'));
 }
 
 // JS Task
@@ -104,7 +116,7 @@ function js_wp() {
 		.src(js_files, { sourcemaps: true })
 		.pipe(uglify())
 		.pipe(concat('scripts.min.js'))
-		.pipe(gulp.dest(theme_folder + 'dist/js/', { sourcemaps: false }));
+		.pipe(gulp.dest(theme_folder + '/dist/js/', { sourcemaps: false }));
 }
 
 // Fonts Task
@@ -112,7 +124,7 @@ function fonts() {
 	return gulp.src(font_files).pipe(gulp.dest('../html/dist/webfonts/'));
 }
 function fonts_wp() {
-	return gulp.src(font_files).pipe(gulp.dest(theme_folder + 'dist/webfonts/'));
+	return gulp.src(font_files).pipe(gulp.dest(theme_folder + '/dist/webfonts/'));
 }
 
 // Cleanup Task
